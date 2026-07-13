@@ -1,0 +1,111 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+:root {
+  color-scheme: dark;
+  --bg: #0a0e14;
+  --panel: #111826;
+  --panel-2: #1a2333;
+  --line: #232e42;
+  --text: #e8ecf4;
+  --muted: #8793ac;
+  --signal: #4c8eff;
+  --signal-dim: #24406b;
+  --data: #7dd3fc;
+  --data-dim: #1c3a4a;
+}
+
+html.light {
+  color-scheme: light;
+  --bg: #eef1f6;
+  --panel: #ffffff;
+  --panel-2: #e3e8f0;
+  --line: #d3dae6;
+  --text: #10151f;
+  --muted: #56617a;
+  --signal: #1d4ed8;
+  --signal-dim: #dce6fb;
+  --data: #0369a1;
+  --data-dim: #cdece7;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: "IBM Plex Sans", sans-serif;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+h1, h2, h3, h4, .font-display {
+  font-family: "Space Grotesk", sans-serif;
+}
+
+.font-mono {
+  font-family: "IBM Plex Mono", monospace;
+}
+
+@layer components {
+  .container-custom {
+    @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .btn-primary {
+    @apply px-6 py-3 font-display font-semibold transition-colors rounded-lg;
+    background-color: var(--signal);
+    color: #ffffff;
+  }
+  .btn-primary:hover {
+    background-color: var(--signal);
+    color: var(--panel);
+  }
+
+  .btn-secondary {
+    /* @apply px-6 py-3 font-display font-semibold rounded-none border transition-colors; */
+    border-color: var(--signal);
+    color: var(--signal);
+    @apply px-6 py-3 border border-blue-500 text-blue-500 rounded-lg font-semibold hover:text-white transition-colors;
+  }
+  .btn-secondary:hover {
+    border-color: var(--text);
+    color: var(--signal);
+  }
+
+  .panel {
+    background-color: var(--panel);
+    border: 1px solid var(--line);
+  }
+
+  .eyebrow {
+    @apply font-mono text-xs tracking-[0.2em] uppercase;
+    color: var(--data);
+  }
+
+  .section-title {
+    @apply font-display text-3xl md:text-4xl font-semibold;
+    color: var(--text);
+  }
+}
+
+.tick-divider {
+  height: 1px;
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--line) 0,
+    var(--line) 6px,
+    transparent 6px,
+    transparent 12px
+  );
+}
